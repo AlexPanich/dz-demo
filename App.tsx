@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { Colors, Fonts } from './shared/tokens';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Coffee app is ready!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<View style={styles.container}>
+			<View style={styles.content}>
+				<Text style={styles.caption}>Один из самых вкусных кофу в городе!</Text>
+				<Text style={styles.promo}>Свежие зёрна, настоящая арабика и бережная обжарка</Text>
+				<Button title='Начать' />
+			</View>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		justifyContent: 'flex-end',
+	},
+	content: {
+		backgroundColor: Colors.black,
+		paddingHorizontal: 30,
+		paddingTop: 50,
+		paddingBottom: 43,
+	},
+	caption: {
+		color: Colors.white,
+		fontSize: Fonts.f34,
+		textAlign: 'center',
+		marginBottom: 8,
+	},
+	promo: {
+		color: Colors.gray,
+		fontSize: Fonts.f14,
+		textAlign: 'center',
+		marginBottom: 24,
+	}
 });
