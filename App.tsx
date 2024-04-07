@@ -8,8 +8,7 @@ export default function App() {
 	const opacity = animagedValue.interpolate({
 		inputRange: [-100, -30, 0],
 		outputRange: [0, 0.3, 1],
-
-	})
+	});
 
 	const onEnter = () => {
 		Animated.timing(animagedValue, {
@@ -17,8 +16,7 @@ export default function App() {
 			duration: 1500,
 			useNativeDriver: true,
 		}).start();
-	}
-
+	};
 
 	return (
 		<View style={styles.container}>
@@ -28,9 +26,14 @@ export default function App() {
 				style={styles.image}
 			>
 				<View style={styles.content}>
-					<Animated.View style={{ transform: [{ translateY: animagedValue }], opacity }} onLayout={onEnter}><Text style={styles.caption}>Один из самых вкусных кофу в городе!</Text></Animated.View>
+					<Animated.View
+						style={{ transform: [{ translateY: animagedValue }], opacity }}
+						onLayout={onEnter}
+					>
+						<Text style={styles.caption}>Один из самых вкусных кофу в городе!</Text>
+					</Animated.View>
 					<Text style={styles.promo}>Свежие зёрна, настоящая арабика и бережная обжарка</Text>
-					<Button title='Начать' />
+					<Button title="Начать" />
 				</View>
 			</ImageBackground>
 		</View>
@@ -62,5 +65,5 @@ const styles = StyleSheet.create({
 		color: Colors.gray,
 		fontSize: Fonts.f14,
 		textAlign: 'center',
-	}
+	},
 });

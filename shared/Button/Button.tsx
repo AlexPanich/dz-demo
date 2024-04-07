@@ -1,14 +1,20 @@
-import { Pressable, PressableProps, View, Text, StyleSheet, Animated, GestureResponderEvent } from "react-native";
-import { Colors, Fonts, Radius } from "../tokens";
-import { useRef } from "react";
+import {
+	Pressable,
+	PressableProps,
+	Text,
+	StyleSheet,
+	Animated,
+	GestureResponderEvent,
+} from 'react-native';
+import { Colors, Fonts, Radius } from '../tokens';
+import { useRef } from 'react';
 
 export default function Button({ title, ...props }: PressableProps & { title: string }) {
 	const animagedValue = useRef(new Animated.Value(100)).current;
 	const color = animagedValue.interpolate({
 		inputRange: [0, 100],
 		outputRange: [Colors.primaryHover, Colors.primary],
-	})
-
+	});
 
 	const hoverIn = (event: GestureResponderEvent) => {
 		Animated.timing(animagedValue, {
@@ -16,8 +22,8 @@ export default function Button({ title, ...props }: PressableProps & { title: st
 			useNativeDriver: true,
 			duration: 100,
 		}).start();
-		props.onPressIn && props.onPressIn(event)
-	}
+		props.onPressIn && props.onPressIn(event);
+	};
 
 	const hoverOut = (event: GestureResponderEvent) => {
 		Animated.timing(animagedValue, {
@@ -25,8 +31,8 @@ export default function Button({ title, ...props }: PressableProps & { title: st
 			useNativeDriver: true,
 			duration: 100,
 		}).start();
-		props.onPressOut && props.onPressOut(event)
-	}
+		props.onPressOut && props.onPressOut(event);
+	};
 
 	return (
 		<Pressable {...props} onPressIn={hoverIn} onPressOut={hoverOut}>
@@ -34,7 +40,7 @@ export default function Button({ title, ...props }: PressableProps & { title: st
 				<Text style={styles.title}>{title}</Text>
 			</Animated.View>
 		</Pressable>
-	)
+	);
 }
 
 const styles = StyleSheet.create({
@@ -49,4 +55,4 @@ const styles = StyleSheet.create({
 		fontSize: Fonts.f16,
 		fontWeight: 'bold',
 	},
-})
+});
