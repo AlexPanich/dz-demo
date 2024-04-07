@@ -10,6 +10,8 @@ export const Fonts = {
 	f14: 14,
 	f16: 16,
 	f34: 34,
+	regular: 'Sora-Regular',
+	semibold: 'Sora-SemiBold',
 };
 
 export const Radius = {
