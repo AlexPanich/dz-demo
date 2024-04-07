@@ -1,12 +1,38 @@
-import { Pressable, PressableProps, View, Text, StyleSheet } from "react-native";
+import { Pressable, PressableProps, View, Text, StyleSheet, Animated, GestureResponderEvent } from "react-native";
 import { Colors, Fonts, Radius } from "../tokens";
+import { useRef } from "react";
 
 export default function Button({ title, ...props }: PressableProps & { title: string }) {
+	const animagedValue = useRef(new Animated.Value(100)).current;
+	const color = animagedValue.interpolate({
+		inputRange: [0, 100],
+		outputRange: [Colors.primaryHover, Colors.primary],
+	})
+
+
+	const hoverIn = (event: GestureResponderEvent) => {
+		Animated.timing(animagedValue, {
+			toValue: 0,
+			useNativeDriver: true,
+			duration: 100,
+		}).start();
+		props.onPressIn && props.onPressIn(event)
+	}
+
+	const hoverOut = (event: GestureResponderEvent) => {
+		Animated.timing(animagedValue, {
+			toValue: 100,
+			useNativeDriver: true,
+			duration: 100,
+		}).start();
+		props.onPressOut && props.onPressOut(event)
+	}
+
 	return (
-		<Pressable {...props}>
-			<View style={styles.root}>
+		<Pressable {...props} onPressIn={hoverIn} onPressOut={hoverOut}>
+			<Animated.View style={{ ...styles.root, backgroundColor: color }}>
 				<Text style={styles.title}>{title}</Text>
-			</View>
+			</Animated.View>
 		</Pressable>
 	)
 }
@@ -17,7 +43,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		borderRadius: Radius.r16,
 		height: 62,
-		backgroundColor: Colors.primary,
 	},
 	title: {
 		color: Colors.white,

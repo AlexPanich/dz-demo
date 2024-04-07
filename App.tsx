@@ -1,8 +1,25 @@
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
-import { Colors, Fonts } from './shared/tokens';
+import { useRef } from 'react';
+import { ImageBackground, StyleSheet, Text, View, Animated } from 'react-native';
+import { Colors, Fonts, Gaps } from './shared/tokens';
 import Button from './shared/Button/Button';
 
 export default function App() {
+	const animagedValue = useRef(new Animated.Value(-100)).current;
+	const opacity = animagedValue.interpolate({
+		inputRange: [-100, -30, 0],
+		outputRange: [0, 0.3, 1],
+
+	})
+
+	const onEnter = () => {
+		Animated.timing(animagedValue, {
+			toValue: 0,
+			duration: 1500,
+			useNativeDriver: true,
+		}).start();
+	}
+
+
 	return (
 		<View style={styles.container}>
 			<ImageBackground
@@ -11,7 +28,7 @@ export default function App() {
 				style={styles.image}
 			>
 				<View style={styles.content}>
-					<Text style={styles.caption}>Один из самых вкусных кофу в городе!</Text>
+					<Animated.View style={{ transform: [{ translateY: animagedValue }], opacity }} onLayout={onEnter}><Text style={styles.caption}>Один из самых вкусных кофу в городе!</Text></Animated.View>
 					<Text style={styles.promo}>Свежие зёрна, настоящая арабика и бережная обжарка</Text>
 					<Button title='Начать' />
 				</View>
@@ -33,18 +50,17 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 30,
 		paddingTop: 50,
 		paddingBottom: 43,
+		gap: Gaps.g24,
 	},
 	caption: {
 		color: Colors.white,
 		fontSize: Fonts.f34,
 		textAlign: 'center',
-		marginBottom: 8,
 		fontWeight: 'bold',
 	},
 	promo: {
 		color: Colors.gray,
 		fontSize: Fonts.f14,
 		textAlign: 'center',
-		marginBottom: 24,
 	}
 });
