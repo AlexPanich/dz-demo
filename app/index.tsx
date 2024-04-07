@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { ImageBackground, StyleSheet, Text, View, Animated } from 'react-native';
-import { Colors, Fonts, Gaps } from './shared/tokens';
-import Button from './shared/Button/Button';
+import { Colors, Fonts, Gaps } from '../shared/tokens';
+import Button from '../shared/Button/Button';
 
-export default function App() {
+export default function Index() {
 	const animagedValue = useRef(new Animated.Value(-100)).current;
 	const opacity = animagedValue.interpolate({
 		inputRange: [-100, -30, 0],
@@ -21,7 +21,7 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 			<ImageBackground
-				source={require('./assets/images/welcome-background.png')}
+				source={require('../assets/images/welcome-background.png')}
 				resizeMode="cover"
 				style={styles.image}
 			>
