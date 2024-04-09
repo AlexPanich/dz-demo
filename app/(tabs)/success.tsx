@@ -6,7 +6,7 @@ export default function Success() {
 	return (
 		<SafeAreaView>
 			<Text>Заказ</Text>
-			<Link href="/catalog">
+			<Link href="/(tabs)/catalog">
 				<Text>Назад в каталог</Text>
 			</Link>
 		</SafeAreaView>

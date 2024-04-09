@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Gaps } from '../../shared/tokens';
 import Search from '../../features/search/ui/Search';
 import CatalogGeo from '../../entities/geo/ui/CatalogGeo';
@@ -8,8 +8,10 @@ import TypeSelect from '../../features/type-select/ui/TypeSelect';
 import ProductList from '../../widgets/product-list/ui/ProductList';
 
 export default function Catalog() {
+	const insets = useSafeAreaInsets();
+
 	return (
-		<SafeAreaView style={styles.wrapper}>
+		<View style={{ ...styles.wrapper, paddingTop: insets.top }}>
 			<StatusBar style="light" />
 			<View style={styles.header}>
 				<CatalogGeo />
@@ -19,7 +21,7 @@ export default function Catalog() {
 				<TypeSelect />
 				<ProductList />
 			</View>
-		</SafeAreaView>
+		</View>
 	);
 }
 
@@ -32,7 +34,8 @@ const styles = StyleSheet.create({
 	header: {
 		backgroundColor: Colors.black,
 		paddingHorizontal: 30,
-		paddingVertical: 34,
+		paddingBottom: 34,
+		paddingTop: 8,
 		gap: Gaps.g28,
 	},
 	content: {
