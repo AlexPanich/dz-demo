@@ -36,7 +36,7 @@ export default function Button({ title, ...props }: PressableProps & { title: st
 
 	return (
 		<Pressable {...props} onPressIn={hoverIn} onPressOut={hoverOut}>
-			<Animated.View style={{ ...styles.root, backgroundColor: color }}>
+			<Animated.View style={{ ...styles.wrapper, backgroundColor: color }}>
 				<Text style={styles.title}>{title}</Text>
 			</Animated.View>
 		</Pressable>
@@ -44,7 +44,7 @@ export default function Button({ title, ...props }: PressableProps & { title: st
 }
 
 const styles = StyleSheet.create({
-	root: {
+	wrapper: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: Radius.r16,
