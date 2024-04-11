@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { ProductListState } from './types';
+import { ProductListState } from './product-list.types';
 import axios, { AxiosError } from 'axios';
 import { API } from '../api/api';
 import { searchAtom } from '../../../features/search/model/search.model';

@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 import Button from './Button';
 import { Gaps } from '../../../shared/tokens';
-import { CoffeeType } from '../../../widgets/product-list/model/types';
+import { CoffeeType } from '../../../widgets/product-list/model/product-list.types';
 import { useAtom } from 'jotai';
 import { typeSelectAtom } from '../model/type-select.model';
 
