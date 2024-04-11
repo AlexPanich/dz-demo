@@ -1,14 +1,15 @@
 import { ActivityIndicator, ScrollView, StyleSheet, Text } from 'react-native';
 import Cart from '../../../entities/Cart/ui/Cart';
 import { Colors, Fonts, Gaps } from '../../../shared/tokens';
-import { useAtom, useAtomValue } from 'jotai';
-import { loadProductsAtom } from '../model/product-list.model';
+import { useAtomValue, useSetAtom } from 'jotai';
+import { loadProductsAtom, productsAtom } from '../model/product-list.model';
 import { useEffect } from 'react';
 import { searchAtom } from '../../../features/search/model/search.model';
 import { typeSelectAtom } from '../../../features/type-select/model/type-select.model';
 
 export default function ProductList() {
-	const [produtsState, loadProducts] = useAtom(loadProductsAtom);
+	const loadProducts = useSetAtom(loadProductsAtom);
+	const produtsState = useAtomValue(productsAtom);
 	const search = useAtomValue(searchAtom);
 	const selectedType = useAtomValue(typeSelectAtom);
 
