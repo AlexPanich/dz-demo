@@ -1,6 +1,6 @@
-import { ScrollView, StyleSheet } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, Text } from 'react-native';
 import Cart from '../../../entities/Cart/ui/Cart';
-import { Gaps } from '../../../shared/tokens';
+import { Colors, Fonts, Gaps } from '../../../shared/tokens';
 import { useAtom, useAtomValue } from 'jotai';
 import { loadProductsAtom } from '../model/product-list.model';
 import { useEffect } from 'react';
@@ -17,11 +17,21 @@ export default function ProductList() {
 	}, [search, selectedType]);
 
 	return (
-		<ScrollView contentContainerStyle={styles.inner}>
-			{produtsState.products.map((coffee) => (
-				<Cart key={coffee.id} {...coffee} />
-			))}
-		</ScrollView>
+		<>
+			{produtsState.isLoading && (
+				<ActivityIndicator style={styles.activity} size="large" color={Colors.primary} />
+			)}
+			{produtsState.error && (
+				<Text style={styles.errorMessage}>
+					Упс... 😞 что то пошло не так. Попробуйте заказать кофе позже.
+				</Text>
+			)}
+			<ScrollView contentContainerStyle={styles.inner}>
+				{produtsState.products.map((coffee) => (
+					<Cart key={coffee.id} {...coffee} />
+				))}
+			</ScrollView>
+		</>
 	);
 }
 
@@ -31,5 +41,15 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		gap: Gaps.g8,
+	},
+	activity: {
+		marginTop: 24,
+	},
+	errorMessage: {
+		color: Colors.gray,
+		fontSize: Fonts.f16,
+		fontFamily: Fonts.regular,
+		textAlign: 'center',
+		paddingHorizontal: 30,
 	},
 });

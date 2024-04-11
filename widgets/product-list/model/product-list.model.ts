@@ -37,11 +37,12 @@ export const loadProductsAtom = atom(
 				error: null,
 			});
 		} catch (error) {
+			console.log(JSON.stringify(error, null, 2));
 			if (error instanceof AxiosError) {
 				set(productsAtom, {
-					courses: [],
+					products: [],
 					isLoading: false,
-					error: error.response?.data.message,
+					error: error.response?.data.message || error.message,
 				});
 			}
 		}

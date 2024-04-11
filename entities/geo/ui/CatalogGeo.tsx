@@ -9,7 +9,7 @@ export default function CatalogGeo() {
 			<Text style={styles.label}>Адресс</Text>
 			<Text style={styles.adress}>
 				Москва, Новослободская 23{' '}
-				<Link href="/adress">
+				<Link href="/(tabs)/(order)/adress">
 					<EditIcon />
 				</Link>
 			</Text>

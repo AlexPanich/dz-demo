@@ -1,21 +1,26 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, Pressable } from 'react-native';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import Button from './Button';
 import { Coffee } from '../../../widgets/product-list/model/types';
+import { Link } from 'expo-router';
 
-export default function Cart({ name, subTitle, price, image }: Coffee) {
+export default function Cart({ name, subTitle, price, image, id }: Coffee) {
 	return (
-		<View style={styles.wrapper}>
-			<Image style={styles.image} source={{ uri: image }} />
-			<View style={styles.description}>
-				<Text style={styles.title}>{name}</Text>
-				<Text style={styles.subTitle}>{subTitle}</Text>
-			</View>
-			<View style={styles.commerce}>
-				<Text style={styles.price}>{price} &#8381;</Text>
-				<Button />
-			</View>
-		</View>
+		<Link href={`/catalog/${id}`} asChild>
+			<Pressable>
+				<View style={styles.wrapper}>
+					<Image style={styles.image} source={{ uri: image }} />
+					<View style={styles.description}>
+						<Text style={styles.title}>{name}</Text>
+						<Text style={styles.subTitle}>{subTitle}</Text>
+					</View>
+					<View style={styles.commerce}>
+						<Text style={styles.price}>{price} &#8381;</Text>
+						<Button />
+					</View>
+				</View>
+			</Pressable>
+		</Link>
 	);
 }
 

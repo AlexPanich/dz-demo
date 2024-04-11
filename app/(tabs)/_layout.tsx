@@ -31,7 +31,7 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="cart"
+				name="(order)"
 				options={{
 					tabBarLabel: 'Заказ',
 					tabBarIcon: ({ focused }) => {
@@ -44,8 +44,6 @@ export default function TabLayout() {
 					},
 				}}
 			/>
-			<Tabs.Screen name="adress" options={{ href: null }} />
-			<Tabs.Screen name="success" options={{ href: null }} />
 		</Tabs>
 	);
 }
