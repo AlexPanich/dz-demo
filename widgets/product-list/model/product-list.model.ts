@@ -1,9 +1,10 @@
 import { atom } from 'jotai';
-import { Coffee, ProductListState } from './types';
+import { ProductListState } from './types';
 import axios, { AxiosError } from 'axios';
 import { API } from '../api/api';
 import { searchAtom } from '../../../features/search/model/search.model';
 import { typeSelectAtom } from '../../../features/type-select/model/type-select.model';
+import { Coffee } from '../../../shared/types';
 
 export const productsAtom = atom<ProductListState>({
 	products: [],

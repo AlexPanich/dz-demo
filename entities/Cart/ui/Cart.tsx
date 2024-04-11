@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Image, Dimensions, Pressable } from 'react-native';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import Button from './Button';
-import { Coffee } from '../../../widgets/product-list/model/types';
 import { Link } from 'expo-router';
+import { Coffee } from '../../../shared/types';
 
 export default function Cart({ name, subTitle, price, image, id }: Coffee) {
 	return (

@@ -1,15 +1,4 @@
-export type CoffeeType = 'cappuccino' | 'latte' | 'macchiato' | 'americano';
-
-export type Coffee = {
-	id: number;
-	name: string;
-	subTitle: string;
-	type: CoffeeType;
-	price: number;
-	image: string;
-	description: string;
-	rating: number;
-};
+import { Coffee } from '../../../shared/types';
 
 export type ProductListState = {
 	products: Coffee[];
