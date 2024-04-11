@@ -9,6 +9,9 @@ export const Colors = {
 	gray5: '#9b9b9b',
 	gray6: '#d2d2d2',
 	gray7: '#dedede',
+	gray8: '#eaeaea',
+	gray9: '#303336',
+	gray10: '#808080',
 	darGray: '#313131',
 	primaryText: '#2f2d2c',
 	secondayText: '#989898',
@@ -27,7 +30,9 @@ export const Fonts = {
 };
 
 export const Radius = {
+	r10: 10,
 	r12: 12,
+	r14: 14,
 	r16: 16,
 	r24: 24,
 };

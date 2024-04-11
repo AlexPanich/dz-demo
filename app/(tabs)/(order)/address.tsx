@@ -1,11 +1,11 @@
-import { StyleSheet, View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Colors } from '../../../shared/tokens';
-import CartGeo from '../../../entities/geo/ui/CartGeo';
+import AddressGeo from '../../../entities/geo/ui/AddressGeo';
 
-export default function Order() {
+export default function Address() {
 	return (
 		<View style={styles.wrapper}>
-			<CartGeo />
+			<AddressGeo />
 		</View>
 	);
 }
@@ -16,5 +16,6 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.white,
 		padding: 30,
 		paddingBottom: 37,
+		gap: 40,
 	},
 });
