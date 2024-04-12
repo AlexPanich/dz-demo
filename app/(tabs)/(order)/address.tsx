@@ -1,5 +1,5 @@
 import { View, StyleSheet } from 'react-native';
-import { Colors } from '../../../shared/tokens';
+import { Colors, Gaps } from '../../../shared/tokens';
 import AddressGeo from '../../../entities/geo/ui/AddressGeo';
 
 export default function Address() {
@@ -13,9 +13,9 @@ export default function Address() {
 const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
-		backgroundColor: Colors.white,
+		backgroundColor: Colors.background,
 		padding: 30,
 		paddingBottom: 37,
-		gap: 40,
+		gap: Gaps.g40,
 	},
 });

@@ -1,16 +1,25 @@
-import { Text } from 'react-native';
-import { Link, useLocalSearchParams } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View } from 'react-native';
+import { Redirect, useLocalSearchParams } from 'expo-router';
+import { Colors } from '../../shared/tokens';
+import FullScreenCard from '../../widgets/full-screen-card/ui/FullScreenCard';
 
 export default function Card() {
-	const { id } = useLocalSearchParams();
+	const { id } = useLocalSearchParams<{ id: string }>();
+
+	if (!id) {
+		return <Redirect href={'/(tabs)/catalog'} />;
+	}
 
 	return (
-		<SafeAreaView>
-			<Text>Карточка напитка {id}</Text>
-			<Link href="/catalog">
-				<Text>Назад в каталог</Text>
-			</Link>
-		</SafeAreaView>
+		<View style={styles.wrapper}>
+			<FullScreenCard productId={id} />
+		</View>
 	);
 }
+
+const styles = StyleSheet.create({
+	wrapper: {
+		flex: 1,
+		backgroundColor: Colors.background,
+	},
+});

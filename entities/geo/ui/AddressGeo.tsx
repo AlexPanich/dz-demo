@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
-import { Colors, Fonts, Radius } from '../../../shared/tokens';
+import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import MarkerIcon from '../../../assets/icons/marker';
 import GeoIcon from '../../../assets/icons/geo';
 import ComentIcom from '../../../assets/icons/coment';
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 	},
 	fields: {
-		gap: 16,
+		gap: Gaps.g16,
 	},
 	fieldWrapper: {
 		borderColor: Colors.gray8,

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import EditIcon from '../../../assets/icons/edit';
 import { Link } from 'expo-router';
-import { Colors, Fonts } from '../../../shared/tokens';
+import { Colors, Fonts, Gaps } from '../../../shared/tokens';
 import { useAtomValue } from 'jotai';
 import { addressAtom } from '../model/geo.model';
 
@@ -24,7 +24,7 @@ export default function CatalogGeo() {
 const styles = StyleSheet.create({
 	wrapper: {
 		alignItems: 'flex-start',
-		gap: 4,
+		gap: Gaps.g4,
 	},
 	label: {
 		color: Colors.gray2,

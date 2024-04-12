@@ -15,6 +15,7 @@ export const Colors = {
 	darGray: '#313131',
 	primaryText: '#2f2d2c',
 	secondayText: '#989898',
+	seaFoam: '#fff5ee',
 	primary: '#c67c4e',
 	primaryHover: '#a76237',
 };
@@ -24,6 +25,7 @@ export const Fonts = {
 	f14: 14,
 	f16: 16,
 	f18: 18,
+	f20: 20,
 	f34: 34,
 	regular: 'Sora-Regular',
 	semibold: 'Sora-SemiBold',
@@ -38,8 +40,12 @@ export const Radius = {
 };
 
 export const Gaps = {
+	g2: 2,
 	g4: 4,
 	g8: 8,
+	g12: 12,
+	g16: 16,
 	g24: 24,
 	g28: 28,
+	g40: 40,
 };

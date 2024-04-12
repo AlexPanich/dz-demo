@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Link } from 'expo-router';
-import { Colors, Fonts, Radius } from '../../../shared/tokens';
+import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import EgitGrayIcon from '../../../assets/icons/edit-gray';
 import { useAtomValue } from 'jotai';
 import { addressAtom } from '../model/geo.model';
@@ -30,7 +30,7 @@ export default function CartGeo() {
 
 const styles = StyleSheet.create({
 	wrapper: {
-		gap: 16,
+		gap: Gaps.g16,
 	},
 	title: {
 		color: Colors.primaryText,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 		fontFamily: Fonts.semibold,
 	},
 	address: {
-		gap: 4,
+		gap: Gaps.g4,
 	},
 	geo: {
 		color: Colors.gray9,

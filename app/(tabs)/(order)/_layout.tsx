@@ -21,6 +21,9 @@ export default function OrderLayout() {
 					color: Colors.primaryText,
 				},
 				headerShadowVisible: false,
+				headerStyle: {
+					backgroundColor: Colors.background,
+				},
 			}}
 		>
 			<Stack.Screen
