@@ -5,3 +5,9 @@ export type ProductState =
 	| { product: null; isLoading: true; error: null } // loading
 	| { product: null; isLoading: false; error: string } // error
 	| { product: null; isLoading: false; error: null }; // start
+
+export type FullScreenCardProps = {
+	productId: number | string;
+};
+
+export type Size = 'S' | 'M' | 'L';

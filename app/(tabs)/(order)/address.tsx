@@ -1,11 +1,11 @@
 import { View, StyleSheet } from 'react-native';
 import { Colors, Gaps } from '../../../shared/tokens';
-import AddressGeo from '../../../entities/geo/ui/AddressGeo';
+import EditDeliveryInfoForm from '../../../widgets/delivery-info/ui/EditDeliveryInfoForm';
 
 export default function Address() {
 	return (
 		<View style={styles.wrapper}>
-			<AddressGeo />
+			<EditDeliveryInfoForm />
 		</View>
 	);
 }

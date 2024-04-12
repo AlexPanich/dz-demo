@@ -4,10 +4,10 @@ import { Link } from 'expo-router';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import EgitGrayIcon from '../../../assets/icons/edit-gray';
 import { useAtomValue } from 'jotai';
-import { addressAtom } from '../model/geo.model';
+import { deliveryInfoAtom } from '../model/delivery-info.model';
 
-export default function CartGeo() {
-	const { geo, coment } = useAtomValue(addressAtom);
+export default function DeliveryInfoCartWidget() {
+	const { geo, coment } = useAtomValue(deliveryInfoAtom);
 
 	return (
 		<View style={styles.wrapper}>

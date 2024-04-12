@@ -9,30 +9,19 @@ import {
 	Platform,
 } from 'react-native';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
-import { useAtomValue, useSetAtom } from 'jotai';
-import { loadProductAtom, productAtom } from '../model/full-screen-card.model';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from '../../../shared/Button/Button';
 import StarIcon from '../../../assets/icons/star';
 import { useRouter } from 'expo-router';
-
-type FullScreenCardProps = {
-	productId: number | string;
-};
-
-type Size = 'S' | 'M' | 'L';
+import { useProduct } from '../model/full-screen-card.hooks';
+import { FullScreenCardProps, Size } from '../model/full-screen-card.types';
 
 const sizes: Size[] = ['S', 'M', 'L'];
 
 export default function FullScreenCard({ productId }: FullScreenCardProps) {
 	const router = useRouter();
-	const loadProduct = useSetAtom(loadProductAtom);
-	const { product, isLoading, error } = useAtomValue(productAtom);
+	const { product, isLoading, error } = useProduct(productId);
 	const [size, setSize] = useState<Size>('M');
-
-	useEffect(() => {
-		loadProduct({ id: productId });
-	}, [productId]);
 
 	const addToCart = () => {
 		router.push('/(tabs)/cart');

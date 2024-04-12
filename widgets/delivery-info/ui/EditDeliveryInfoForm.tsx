@@ -1,16 +1,17 @@
-import { Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import MarkerIcon from '../../../assets/icons/marker';
-import GeoIcon from '../../../assets/icons/geo';
+
 import ComentIcom from '../../../assets/icons/coment';
 import { useAtom } from 'jotai';
-import { addressAtom } from '../model/geo.model';
+import { deliveryInfoAtom } from '../model/delivery-info.model';
 import { useState } from 'react';
 import Button from '../../../shared/Button/Button';
-import * as Location from 'expo-location';
 
-export default function AddressGeo() {
-	const [addressState, setAddressState] = useAtom(addressAtom);
+import Geo from '../../../features/geo/ui/Geo';
+
+export default function Ed() {
+	const [addressState, setAddressState] = useAtom(deliveryInfoAtom);
 
 	const [geo, setGeo] = useState(addressState.geo);
 	const [coment, setComent] = useState(addressState.coment);
@@ -20,37 +21,6 @@ export default function AddressGeo() {
 			geo,
 			coment,
 		});
-	};
-
-	const getLocation = async () => {
-		const { status } = await Location.requestForegroundPermissionsAsync();
-		if (status !== 'granted') {
-			return;
-		}
-
-		const location = await Location.getCurrentPositionAsync();
-		if (!location) {
-			return;
-		}
-		const [geocodedAddress] = await Location.reverseGeocodeAsync({
-			latitude: location.coords.latitude,
-			longitude: location.coords.longitude,
-		});
-		const addressArray = [];
-		if (geocodedAddress.region) {
-			addressArray.push(geocodedAddress.region);
-		}
-		if (geocodedAddress.city && geocodedAddress.city !== geocodedAddress.region) {
-			addressArray.push(geocodedAddress.city);
-		}
-		if (geocodedAddress.street) {
-			addressArray.push(geocodedAddress.street);
-		}
-		if (geocodedAddress.streetNumber) {
-			addressArray.push(geocodedAddress.streetNumber);
-		}
-		const geo = addressArray.join(',');
-		setGeo(geo);
 	};
 
 	return (
@@ -65,9 +35,9 @@ export default function AddressGeo() {
 					<View style={styles.icon}>
 						<MarkerIcon />
 					</View>
-					<Pressable style={styles.geo} onPress={getLocation}>
-						<GeoIcon />
-					</Pressable>
+					<View style={styles.geo}>
+						<Geo onGetGeo={setGeo} />
+					</View>
 				</View>
 				<View style={[styles.fieldWrapper, styles.multi]}>
 					<TextInput
@@ -121,12 +91,6 @@ const styles = StyleSheet.create({
 		left: 16,
 	},
 	geo: {
-		backgroundColor: Colors.primary,
-		width: 34,
-		height: 34,
-		borderRadius: Radius.r10,
-		justifyContent: 'center',
-		alignItems: 'center',
 		position: 'absolute',
 		right: 9,
 		top: 11,

@@ -3,10 +3,10 @@ import EditIcon from '../../../assets/icons/edit';
 import { Link } from 'expo-router';
 import { Colors, Fonts, Gaps } from '../../../shared/tokens';
 import { useAtomValue } from 'jotai';
-import { addressAtom } from '../model/geo.model';
+import { deliveryInfoAtom } from '../model/delivery-info.model';
 
-export default function CatalogGeo() {
-	const { geo } = useAtomValue(addressAtom);
+export default function DeliveryInfoCatalogWidget() {
+	const { geo } = useAtomValue(deliveryInfoAtom);
 
 	return (
 		<View style={styles.wrapper}>

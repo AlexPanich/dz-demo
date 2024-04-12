@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { Colors } from '../../../shared/tokens';
-import CartGeo from '../../../entities/geo/ui/CartGeo';
+import DeliveryInfoCartWidget from '../../../widgets/delivery-info/ui/DeliveryInfoCartWidget';
 
 export default function Order() {
 	return (
 		<View style={styles.wrapper}>
-			<CartGeo />
+			<DeliveryInfoCartWidget />
 		</View>
 	);
 }
