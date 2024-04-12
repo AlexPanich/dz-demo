@@ -7,6 +7,7 @@ import { useAtom } from 'jotai';
 import { addressAtom } from '../model/geo.model';
 import { useState } from 'react';
 import Button from '../../../shared/Button/Button';
+import * as Location from 'expo-location';
 
 export default function AddressGeo() {
 	const [addressState, setAddressState] = useAtom(addressAtom);
@@ -21,6 +22,37 @@ export default function AddressGeo() {
 		});
 	};
 
+	const getLocation = async () => {
+		const { status } = await Location.requestForegroundPermissionsAsync();
+		if (status !== 'granted') {
+			return;
+		}
+
+		const location = await Location.getCurrentPositionAsync();
+		if (!location) {
+			return;
+		}
+		const [geocodedAddress] = await Location.reverseGeocodeAsync({
+			latitude: location.coords.latitude,
+			longitude: location.coords.longitude,
+		});
+		const addressArray = [];
+		if (geocodedAddress.region) {
+			addressArray.push(geocodedAddress.region);
+		}
+		if (geocodedAddress.city && geocodedAddress.city !== geocodedAddress.region) {
+			addressArray.push(geocodedAddress.city);
+		}
+		if (geocodedAddress.street) {
+			addressArray.push(geocodedAddress.street);
+		}
+		if (geocodedAddress.streetNumber) {
+			addressArray.push(geocodedAddress.streetNumber);
+		}
+		const geo = addressArray.join(',');
+		setGeo(geo);
+	};
+
 	return (
 		<View style={styles.wrapper}>
 			<View style={styles.fields}>
@@ -33,7 +65,7 @@ export default function AddressGeo() {
 					<View style={styles.icon}>
 						<MarkerIcon />
 					</View>
-					<Pressable style={styles.geo}>
+					<Pressable style={styles.geo} onPress={getLocation}>
 						<GeoIcon />
 					</Pressable>
 				</View>
@@ -70,7 +102,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: Radius.r14,
 		paddingLeft: 42,
-		paddingRight: 10,
+		paddingRight: 52,
 		height: 56,
 		fontSize: 14,
 		fontFamily: Fonts.regular,
@@ -81,6 +113,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 		height: 139,
 		paddingTop: 15,
+		paddingRight: 10,
 	},
 	icon: {
 		position: 'absolute',
