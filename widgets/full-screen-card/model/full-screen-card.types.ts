@@ -9,5 +9,3 @@ export type ProductState =
 export type FullScreenCardProps = {
 	productId: number | string;
 };
-
-export type Size = 'S' | 'M' | 'L';

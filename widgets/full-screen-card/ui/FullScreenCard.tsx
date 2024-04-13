@@ -5,23 +5,22 @@ import {
 	Image,
 	ActivityIndicator,
 	Dimensions,
-	Pressable,
 	Platform,
 } from 'react-native';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
-import { useState } from 'react';
 import Button from '../../../shared/Button/Button';
 import StarIcon from '../../../assets/icons/star';
 import { useRouter } from 'expo-router';
 import { useProduct } from '../model/full-screen-card.hooks';
-import { FullScreenCardProps, Size } from '../model/full-screen-card.types';
-
-const sizes: Size[] = ['S', 'M', 'L'];
+import { FullScreenCardProps } from '../model/full-screen-card.types';
+import SizeSelect from '../../../shared/SizeSelect/SizeSelect';
+import { Size } from '../../../shared/types';
+import { useState } from 'react';
 
 export default function FullScreenCard({ productId }: FullScreenCardProps) {
 	const router = useRouter();
 	const { product, isLoading, error } = useProduct(productId);
-	const [size, setSize] = useState<Size>('M');
+	const [size, setSize] = useState<Size>(Size.M);
 
 	const addToCart = () => {
 		router.push('/(tabs)/cart');
@@ -57,17 +56,7 @@ export default function FullScreenCard({ productId }: FullScreenCardProps) {
 					</View>
 					<View style={styles.sizeSelector}>
 						<Text style={styles.blockTitle}>Размер</Text>
-						<View style={styles.sizeRadio}>
-							{sizes.map((s) => (
-								<Pressable
-									style={s === size ? styles.sizeRadioButtonActive : styles.sizeRadioButton}
-									key={s}
-									onPress={() => setSize(s)}
-								>
-									<Text style={styles.sizeRadioText}>{s}</Text>
-								</Pressable>
-							))}
-						</View>
+						<SizeSelect value={size} onChage={setSize} />
 					</View>
 					<View style={styles.footer}>
 						<View style={styles.price}>
@@ -164,28 +153,6 @@ const styles = StyleSheet.create({
 	},
 	sizeSelector: {
 		gap: Gaps.g12,
-	},
-	sizeRadio: {
-		flexDirection: 'row',
-		gap: Gaps.g12,
-	},
-	sizeRadioButton: {
-		flex: 1,
-		paddingVertical: 12,
-		borderWidth: 1,
-		borderColor: Colors.gray7,
-		borderRadius: Radius.r12,
-	},
-	sizeRadioButtonActive: {
-		flex: 1,
-		paddingVertical: 12,
-		borderWidth: 1,
-		borderColor: Colors.primary,
-		borderRadius: Radius.r12,
-		backgroundColor: Colors.seaFoam,
-	},
-	sizeRadioText: {
-		textAlign: 'center',
 	},
 	footer: {
 		position: 'absolute',
