@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Slot, SplashScreen } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -23,7 +23,15 @@ export default function RootLayout() {
 
 	return (
 		<SafeAreaProvider>
-			<Slot />
+			<Stack
+				screenOptions={{
+					headerShown: false,
+				}}
+			>
+				<Stack.Screen name="index" />
+				<Stack.Screen name="(tabs)" />
+				<Stack.Screen name="catalog/[id]" />
+			</Stack>
 		</SafeAreaProvider>
 	);
 }

@@ -3,6 +3,7 @@ import { ImageBackground, StyleSheet, Text, View, Animated } from 'react-native'
 import { Colors, Fonts, Gaps } from '../shared/tokens';
 import Button from '../shared/Button/Button';
 import { router } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
 export default function IndexPage() {
 	const animagedValue = useRef(new Animated.Value(-100)).current;
@@ -20,11 +21,12 @@ export default function IndexPage() {
 	};
 
 	const start = () => {
-		router.push('/catalog');
+		router.push('/(tabs)/catalog');
 	};
 
 	return (
 		<View style={styles.container}>
+			<StatusBar style="light" />
 			<ImageBackground
 				source={require('../assets/images/welcome-background.png')}
 				resizeMode="cover"
