@@ -1,5 +1,5 @@
 import { ActivityIndicator, ScrollView, StyleSheet, Text } from 'react-native';
-import Cart from '../../../entities/Cart/ui/Cart';
+import Card from '../../../entities/Card/ui/Card';
 import { Colors, Fonts, Gaps } from '../../../shared/tokens';
 import { useProducts } from '../model/product-list.hooks';
 
@@ -18,7 +18,7 @@ export default function ProductList() {
 			)}
 			<ScrollView contentContainerStyle={styles.inner}>
 				{products.map((coffee) => (
-					<Cart key={coffee.id} {...coffee} />
+					<Card key={coffee.id} {...coffee} />
 				))}
 			</ScrollView>
 		</>

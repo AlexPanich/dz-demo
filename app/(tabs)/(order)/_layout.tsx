@@ -42,6 +42,8 @@ export default function OrderLayout() {
 				name="success"
 				options={{
 					headerTitle: 'Заказ оформлен',
+					headerBackTitleVisible: false,
+					headerLeft: undefined,
 				}}
 			/>
 		</Stack>

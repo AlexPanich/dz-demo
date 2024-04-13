@@ -3,8 +3,12 @@ import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import Button from './Button';
 import { Link } from 'expo-router';
 import { Coffee } from '../../../shared/types';
+import { useSetAtom } from 'jotai';
+import { addToCartAtom } from '../../../widgets/cart/model/cart.model';
 
-export default function Cart({ name, subTitle, price, image, id }: Coffee) {
+export default function Card(product: Coffee) {
+	const { name, subTitle, price, image, id } = product;
+	const addToCart = useSetAtom(addToCartAtom);
 	return (
 		<Link href={`/catalog/${id}`} asChild>
 			<Pressable>
@@ -16,7 +20,7 @@ export default function Cart({ name, subTitle, price, image, id }: Coffee) {
 					</View>
 					<View style={styles.commerce}>
 						<Text style={styles.price}>{price} &#8381;</Text>
-						<Button />
+						<Button onPress={() => addToCart({ product, size: 'M' })} />
 					</View>
 				</View>
 			</Pressable>
