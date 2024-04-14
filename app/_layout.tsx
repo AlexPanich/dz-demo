@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
-import { SplashScreen, Stack } from 'expo-router';
+import { SplashScreen, Stack, useRouter } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Pressable } from 'react-native';
+import BackIcon from '../assets/icons/back';
+import { Colors, Fonts } from '../shared/tokens';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+	const router = useRouter();
+
 	const [fontsLoaded, fontError] = useFonts({
 		'Sora-Regular': require('../assets/fonts/Sora-Regular.ttf'),
 		'Sora-SemiBold': require('../assets/fonts/Sora-SemiBold.ttf'),
@@ -30,7 +35,28 @@ export default function RootLayout() {
 			>
 				<Stack.Screen name="index" />
 				<Stack.Screen name="(tabs)" />
-				<Stack.Screen name="catalog/[id]" />
+				<Stack.Screen
+					name="catalog/[id]"
+					options={{
+						headerShown: true,
+						headerTitle: 'Описание',
+						headerStyle: {
+							backgroundColor: Colors.background,
+						},
+						headerLeft: () => (
+							<Pressable onPress={() => router.back()}>
+								<BackIcon />
+							</Pressable>
+						),
+						headerTitleAlign: 'center',
+						headerTitleStyle: {
+							fontFamily: Fonts.semibold,
+							fontSize: Fonts.f18,
+							color: Colors.primaryText,
+						},
+						headerShadowVisible: false,
+					}}
+				/>
 			</Stack>
 		</SafeAreaProvider>
 	);

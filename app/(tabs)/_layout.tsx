@@ -9,6 +9,7 @@ export default function TabLayout() {
 	return (
 		<Tabs
 			screenOptions={{
+				headerShown: false,
 				tabBarStyle: styles.tabBarStyle,
 				tabBarBackground: () => <View style={styles.delimiter} />,
 				tabBarLabelPosition: 'beside-icon',
@@ -18,7 +19,6 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name="catalog"
 				options={{
-					headerShown: false,
 					tabBarLabel: 'Главная',
 					tabBarIcon: ({ focused }) => {
 						return (

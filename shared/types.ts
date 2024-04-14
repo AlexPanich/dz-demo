@@ -10,3 +10,9 @@ export type Coffee = {
 	description: string;
 	rating: number;
 };
+
+export enum Size {
+	S = 'S',
+	M = 'M',
+	L = 'L',
+}

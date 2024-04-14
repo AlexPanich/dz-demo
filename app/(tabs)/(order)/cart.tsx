@@ -1,20 +1,20 @@
-import { Text } from 'react-native';
-import { Link } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View } from 'react-native';
+import { Colors } from '../../../shared/tokens';
+import DeliveryInfoCartWidget from '../../../widgets/delivery-info/ui/DeliveryInfoCartWidget';
 
 export default function Order() {
 	return (
-		<SafeAreaView>
-			<Text>Заказ</Text>
-			<Link href="/(tabs)/catalog">
-				<Text>Назад в каталог</Text>
-			</Link>
-			<Link href="/(order)/adress">
-				<Text>На страницу редактирования адреса</Text>
-			</Link>
-			<Link href="/(order)/success">
-				<Text>На страницу заказ оформлен</Text>
-			</Link>
-		</SafeAreaView>
+		<View style={styles.wrapper}>
+			<DeliveryInfoCartWidget />
+		</View>
 	);
 }
+
+const styles = StyleSheet.create({
+	wrapper: {
+		flex: 1,
+		backgroundColor: Colors.background,
+		padding: 30,
+		paddingBottom: 37,
+	},
+});
