@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 30,
 		flexDirection: 'row',
 		flexWrap: 'wrap',
-		gap: Gaps.g8,
+		rowGap: Gaps.g16,
+		columnGap: Gaps.g12,
 	},
 	activity: {
 		marginTop: 24,

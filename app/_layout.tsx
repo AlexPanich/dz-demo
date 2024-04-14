@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Pressable } from 'react-native';
 import BackIcon from '../assets/icons/back';
 import { Colors, Fonts } from '../shared/tokens';
+import { Notification } from '../shared/Notification/Notification';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,6 +29,7 @@ export default function RootLayout() {
 
 	return (
 		<SafeAreaProvider>
+			<Notification />
 			<Stack
 				screenOptions={{
 					headerShown: false,
