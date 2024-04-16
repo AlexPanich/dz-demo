@@ -16,14 +16,22 @@ import { FullScreenCardProps } from '../model/full-screen-card.types';
 import SizeSelect from '../../../shared/SizeSelect/SizeSelect';
 import { Size } from '../../../shared/types';
 import { useState } from 'react';
+import { useSetAtom } from 'jotai';
+import { addToCartAtom } from '../../cart/model/cart.model';
+import { factorSize } from '../../../shared/constants';
 
 export default function FullScreenCard({ productId }: FullScreenCardProps) {
 	const router = useRouter();
 	const { product, isLoading, error } = useProduct(productId);
 	const [size, setSize] = useState<Size>(Size.M);
+	const addToCart = useSetAtom(addToCartAtom);
 
-	const addToCart = () => {
-		router.push('/(tabs)/cart');
+	const addToCartHandle = () => {
+		if (!product) {
+			return;
+		}
+		addToCart({ product, size });
+		router.push('/catalog');
 	};
 
 	return (
@@ -61,10 +69,10 @@ export default function FullScreenCard({ productId }: FullScreenCardProps) {
 					<View style={styles.footer}>
 						<View style={styles.price}>
 							<Text style={styles.priceTitle}>Цена</Text>
-							<Text style={styles.priceValue}>{product.price} &#8381;</Text>
+							<Text style={styles.priceValue}>{product.price + factorSize[size]} &#8381;</Text>
 						</View>
 						<View style={styles.actionWrapper}>
-							<Button title="В корзину" onPress={addToCart} />
+							<Button title="В корзину" onPress={addToCartHandle} />
 						</View>
 					</View>
 				</>
@@ -182,6 +190,7 @@ const styles = StyleSheet.create({
 	},
 	price: {
 		gap: Gaps.g4,
+		width: 60,
 	},
 	priceTitle: {
 		color: Colors.gray5,

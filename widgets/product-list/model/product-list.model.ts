@@ -36,7 +36,6 @@ export const loadProductsAtom = atom(null, async (get, set) => {
 			error: null,
 		});
 	} catch (error) {
-		console.log(JSON.stringify(error, null, 2));
 		if (error instanceof AxiosError) {
 			set(productsAtom, {
 				products: [],

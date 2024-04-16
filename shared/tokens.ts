@@ -12,6 +12,7 @@ export const Colors = {
 	gray8: '#eaeaea',
 	gray9: '#303336',
 	gray10: '#808080',
+	gray11: '#f4f4f4',
 	darGray: '#313131',
 	primaryText: '#2f2d2c',
 	secondayText: '#989898',
@@ -36,6 +37,7 @@ export const Radius = {
 	r12: 12,
 	r14: 14,
 	r16: 16,
+	r20: 20,
 	r24: 24,
 };
 
@@ -43,6 +45,7 @@ export const Gaps = {
 	g2: 2,
 	g4: 4,
 	g8: 8,
+	g14: 14,
 	g12: 12,
 	g16: 16,
 	g24: 24,

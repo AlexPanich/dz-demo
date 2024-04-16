@@ -13,7 +13,7 @@ export default function DeliveryInfoCatalogWidget() {
 			<Text style={styles.label}>Адресс</Text>
 			<Text style={styles.address}>
 				{geo ?? 'Не задан'}{' '}
-				<Link href="/address">
+				<Link href="/(tabs)/address">
 					<EditIcon />
 				</Link>
 			</Text>

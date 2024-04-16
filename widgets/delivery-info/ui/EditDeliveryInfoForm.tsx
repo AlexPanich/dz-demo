@@ -1,16 +1,14 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import { Colors, Fonts, Gaps, Radius } from '../../../shared/tokens';
 import MarkerIcon from '../../../assets/icons/marker';
-
 import ComentIcom from '../../../assets/icons/coment';
 import { useAtom } from 'jotai';
 import { deliveryInfoAtom } from '../model/delivery-info.model';
 import { useState } from 'react';
 import Button from '../../../shared/Button/Button';
-
 import Geo from '../../../features/geo/ui/Geo';
 
-export default function Ed() {
+export default function EditDeliveryInfoForm() {
 	const [addressState, setAddressState] = useAtom(deliveryInfoAtom);
 
 	const [geo, setGeo] = useState(addressState.geo);
